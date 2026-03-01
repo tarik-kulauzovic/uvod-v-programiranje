@@ -66,9 +66,7 @@ def pretvori_v_letno_obrestno_mero(mesecna_obrestna_mera):
     
     letna_obrestna_mera = (1 + mesecna_obrestna_mera) ** 12 - 1
     
-    
     odstotki = letna_obrestna_mera * 100
-    
     
     return round(odstotki)
 
