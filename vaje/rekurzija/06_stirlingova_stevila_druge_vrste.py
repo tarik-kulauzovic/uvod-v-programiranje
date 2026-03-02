@@ -22,7 +22,14 @@
 #     >>> stirling(10,3)
 #     9330
 # =============================================================================
-
+def stirling(n, k):
+    
+    if n == 0 and k == 0:
+        return 1
+    if n == 0 or k == 0 or k > n:
+        return 0
+    
+    return k * stirling(n - 1, k) + stirling(n - 1, k - 1)
 # =====================================================================@020024=
 # 2. podnaloga
 # Stirlingova števila druge vrste lahko računamo tudi po naslednji direktni
@@ -40,7 +47,26 @@
 #     55980
 #     >>>
 # =============================================================================
+def binomski(n, k):
+    if k == 0:
+        return 1
+    else:
+        return ((n - k + 1) * binomski(n, k-1)) // k
 
+def stirling_vsota(n, k, j):
+    if n < 0 or k < 0 or j < 0:
+        return 0
+    
+    
+    j = min(j, k)
+    
+    vsota = 0
+    for i in range(0, j + 1):
+        
+        clen = ((-1) ** i) * binomski(k, i) * ((k - i) ** n)
+        vsota += clen
+    
+    return vsota
 # =====================================================================@020027=
 # 3. podnaloga
 # S pomočjo funkcije `stirling_vsota` iz prejšnje podnaloge
@@ -53,8 +79,44 @@
 #     >>> stirling_direktno(10,3)
 #     9330
 # =============================================================================
+def fakulteta(n):
+    
+    if n == 0:
+        return 1
+    else:
+        return n* fakulteta(n-1)
 
+def binomski(n, k):
+    if k == 0:
+        return 1
+    else:
+        return ((n - k + 1) * binomski(n, k-1)) // k
+    
+def stirling_vsota(n, k, j):
+    if n < 0 or k < 0 or j < 0:
+        return 0
+    
+    
+    j = min(j, k)
+    
+    vsota = 0
+    for i in range(0, j + 1):
+        
+        clen = ((-1) ** i) * binomski(k, i) * ((k - i) ** n)
+        vsota += clen
+    
+    return vsota
 
+def stirling_direktno(n, k):
+   
+    if n < 0 or k < 0 or k > n:
+        return 0
+    if n == 0 and k == 0:
+        return 1
+    
+    vsota = stirling_vsota(n, k, k)
+    
+    return vsota // fakulteta(k)
 
 
 

@@ -7,7 +7,20 @@
 # Definirajte funkcijo `binomski_fakulteta(n, k)`, ki s pomočjo te formule
 # izračuna binomski simbol. Ne pozabite si definirati tudi funkcije `fakulteta`.
 # =============================================================================
+def fakulteta(n):
+    
+    if n == 0:
+        return 1
+    else:
+        return n* fakulteta(n-1)
 
+
+def binomski_fakulteta(n, k):
+    
+    if k < 0 or k > n:
+        return 0
+    
+    return fakulteta(n) // (fakulteta(k) * fakulteta(n - k))
 # =====================================================================@000951=
 # 2. podnaloga
 # Seveda to ni edini način za izračun binomskega simbola. Lahko ga izračunamo
@@ -17,6 +30,12 @@
 # Definirajte funkcijo `binomski_rekurzija(n, k)`, ki binomski simbol definira
 # po tej formuli.
 # =============================================================================
+def binomski_rekurzija(n, k):
+
+    if k == 0 or k == n:
+        return 1
+    
+    return binomski_rekurzija(n - 1, k) + binomski_rekurzija(n - 1, k - 1)
 
 # =====================================================================@000952=
 # 3. podnaloga
@@ -26,6 +45,11 @@
 # Definirajte še funkcijo `binomski_ucinkovit(n, k)`, ki binomski simbol
 # definira po tej formuli. Pri tem pazite, da za rezultat vrnete celo število.
 # =============================================================================
+def binomski_ucinkovit(n, k):
+    if k == 0:
+        return 1
+    else:
+        return (n - k + 1) * binomski_ucinkovit(n, k - 1) // k
 
 
 
