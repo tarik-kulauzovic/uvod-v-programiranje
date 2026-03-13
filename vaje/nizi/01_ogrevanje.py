@@ -45,7 +45,12 @@ def skoraj_enaka(beseda1, beseda2):
 #     >>> zamenjaj("abeceda", "")
 #     "abeceda"
 # =============================================================================
+def zamenjaj(niz1, niz2):
 
+    if not niz1 or not niz2:
+        return niz1
+    
+    return niz1[:-1] + niz2[-1]
 # =====================================================================@027482=
 # 4. podnaloga
 # Sestavite funkcijo `zlij`, ki sprejme dva niza in vrne nov niz, kjer se
@@ -59,7 +64,19 @@ def skoraj_enaka(beseda1, beseda2):
 #     >>> zlij("AAAAA", "BBB")
 #     "ABABABAA"
 # =============================================================================
-
+def zlij(niz1, niz2):
+    rezultat = ""
+   
+    min_dolzina = min(len(niz1), len(niz2))
+    
+    
+    for i in range(min_dolzina):
+        rezultat += niz1[i] + niz2[i]
+        
+    
+    rezultat += niz1[min_dolzina:] + niz2[min_dolzina:]
+    
+    return rezultat
 
 
 

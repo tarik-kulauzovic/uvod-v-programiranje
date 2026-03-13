@@ -7,7 +7,8 @@
 #     >>> prezrcali('abeceda')
 #     'adeceba'
 # =============================================================================
-
+def prezrcali(niz):
+    return niz[::-1]
 # =====================================================================@027492=
 # 2. podnaloga
 # Sestavite funkcijo `je_palindrom`, ki preveri, če je niz palindrom.
@@ -15,7 +16,12 @@
 #     >>> je_palindrom('kajak')
 #     True
 # =============================================================================
-
+def je_palindrom(niz):
+    nazaj = prezrcali(niz)
+    if nazaj == niz:
+        return True
+    else:
+        return False
 # =====================================================================@027483=
 # 3. podnaloga
 # Napiši funkcijo `odstrani_samoglasnike`, ki sprejme niz in vrne nov niz brez
@@ -24,7 +30,17 @@
 #     >>> odstrani_samoglasnike("aeoIcesta")
 #     "cesta"
 # =============================================================================
-
+def odstrani_samoglasnike(niz):
+    samoglasniki = "aeiouAEIOU"
+    
+    for i in range(len(niz)):
+        # Če znak na mestu i NI samoglasnik...
+        if niz[i] not in samoglasniki:
+            # ...vrni niz od tega mesta naprej
+            return niz[i:]
+            
+    # Če so bili VSI znaki samoglasniki, vrni prazen niz
+    return ""
 # =====================================================================@027484=
 # 4. podnaloga
 # Sestavite funkcijo `obrni_oklepaje`, ki sprejme niz, ki vsebuje zgolj cela
