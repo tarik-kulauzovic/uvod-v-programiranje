@@ -34,12 +34,10 @@ def odstrani_samoglasnike(niz):
     samoglasniki = "aeiouAEIOU"
     
     for i in range(len(niz)):
-        # Če znak na mestu i NI samoglasnik...
         if niz[i] not in samoglasniki:
-            # ...vrni niz od tega mesta naprej
+            
             return niz[i:]
             
-    # Če so bili VSI znaki samoglasniki, vrni prazen niz
     return ""
 # =====================================================================@027484=
 # 4. podnaloga
@@ -50,7 +48,19 @@ def odstrani_samoglasnike(niz):
 #     >>> obrni_oklepaje("((()(3+4)))")
 #     ")))()3+4((("
 # =============================================================================
+def obrni_oklepaje(niz):
+    rezultat = ""
+    oklepaj = "("
+    zaklepaj = ")"
 
+    for i in niz:
+        if i == oklepaj:
+            rezultat += zaklepaj
+        elif i ==  zaklepaj:
+            rezultat += oklepaj
+        else: 
+            rezultat += i
+    return rezultat
 # =====================================================================@027485=
 # 5. podnaloga
 # Sestavite funkcijo `prestej_posebno`, ki sprejme niz, znak `c` in število `k`
@@ -61,8 +71,21 @@ def odstrani_samoglasnike(niz):
 #     >>> prestej_posebno("aa  a ", "a", 3)
 #     1
 # =============================================================================
-
-
+def prestej_posebno(niz, c, k):
+    stevec_c = 0
+    stevec_presledkov = 0
+    zacni_steti = False
+    
+    for i in niz:
+        if i == c:
+            stevec_c += 1
+            if stevec_c == k:
+                zacni_steti = True
+        
+        elif i == " " and zacni_steti:
+            stevec_presledkov += 1
+    
+    return stevec_presledkov
 
 
 
