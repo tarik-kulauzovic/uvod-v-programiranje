@@ -10,7 +10,15 @@
 #     >>> filtriraj("Ne gremo še domov", "ngm")
 #     "N__g__m_______m__"
 # =============================================================================
-
+def filtriraj(niz1, niz2):
+    novi_niz = ""
+    niz2 = niz2.lower()
+    for i in niz1:
+        if i.lower() in niz2:
+            novi_niz += i
+        else:
+            novi_niz += "_"
+    return novi_niz
 # =====================================================================@027490=
 # 2. podnaloga
 # Sestavite funkcijo `pretvori`, ki sprejme niz in bazo ter vrne podano število
@@ -23,7 +31,14 @@
 #     >>> pretvori("2ACBD04", 36)
 #     4978911892
 # =============================================================================
+import string
 
+def pretvori(niz, baza):
+    znaki = "0123456789" + string.ascii_uppercase
+    rezultat = 0
+    for i in niz:
+        rezultat = rezultat * baza + znaki.index(i)
+    return rezultat
 # =====================================================================@027489=
 # 3. podnaloga
 # Sestavite funkcijo `izbrisi_podvojene`, ki sprejme niz in odstrani vse
@@ -35,7 +50,15 @@
 #     >>> izbrisi_podvojene("abaab")
 #     "abb"
 # =============================================================================
-
+def izbrisi_podvojene(s, last=None):
+    if not s:
+        return s
+    elif s[0] == last:
+        return izbrisi_podvojene(s[1:], last)
+    elif len(s) >= 2 and s[0] == s[1]:
+        return izbrisi_podvojene(s[2:], s[0])
+    else:
+        return s[0] + izbrisi_podvojene(s[1:], None)
 # =====================================================================@027487=
 # 4. podnaloga
 # Sestavite funkcijo `vsak_k_ti`, ki sprejme niz in parameter `k` ter vrne nov
@@ -47,7 +70,10 @@
 #     >>> vsak_k_ti("abcdefghijk", 0)
 #     ""
 # =============================================================================
-
+def vsak_k_ti(niz, k):
+    if k <= 0:
+        return ""
+    return niz[::k]
 # =====================================================================@027488=
 # 5. podnaloga
 # Sestavitev funkcijo `zaporedje`, ki sprejme niz in vrne nov niz sestavljen iz
@@ -57,7 +83,11 @@
 #     >>> zaporedje("0123456789X")
 #     "0136X"
 # =============================================================================
-
+def zaporedje(niz, k=1):
+    if len(niz) == 0:
+        return ""
+    else:
+        return niz[0] + zaporedje(niz[k:], k + 1)
 
 
 

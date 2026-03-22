@@ -14,7 +14,13 @@
 #     > Vnesi celo število: 10
 #     10
 # =============================================================================
-
+def preberi_celo_stevilo():
+    while True:
+        vnos = input("> Vnesi celo število: ")
+        try:
+            return int(vnos)
+        except ValueError:
+            print(f'Žal "{vnos}" ni celo število, poskusi ponovno!')
 # =====================================================================@027497=
 # 2. podnaloga
 # S pomočjo prejšnje funkcije sestavi funkcijo `ugibaj`, ki sprejme pravilni
@@ -36,7 +42,16 @@
 #     > Vnesi celo število: 20
 #     BRAVO! Res sem si zamislil število 20!
 # =============================================================================
-
+def ugibaj(pravilni_odgovor):
+    while True:
+        ugib = preberi_celo_stevilo()
+        if ugib < pravilni_odgovor:
+            print("Moje število je večje!")
+        elif ugib > pravilni_odgovor:
+            print("Moje število je manjše!")
+        else:
+            print(f"BRAVO! Res sem si zamislil število {pravilni_odgovor}!")
+            return
 # =====================================================================@027623=
 # 3. podnaloga
 # Sestavite funkcijo `racunalnik_ugiba(spodnji, zgornji)`, ki z metodo bisekcije
@@ -70,7 +85,24 @@
 #     E/V/M> e
 #     Juhu, uganil sem! Zamislil si si število 12!
 # =============================================================================
-
+def racunalnik_ugiba(spodnji, zgornji):
+    while spodnji < zgornji:
+        sredina = (spodnji + zgornji) // 2
+        while True:
+            print(f"Ali je tvoje število Enako/Večje/Manjše od {sredina}?")
+            odgovor = input("E/V/M> ")
+            if odgovor in ("E", "e"):
+                print(f"Juhu, uganil sem! Zamislil si si število {sredina}!")
+                return
+            elif odgovor in ("V", "v"):
+                spodnji = sredina + 1
+                break
+            elif odgovor in ("M", "m"):
+                zgornji = sredina - 1
+                break
+            else:
+                print("Ali lahko daš normalen odgovor?")
+    print(f"Juhu, uganil sem! Zamislil si si število {spodnji}!")
 
 
 
