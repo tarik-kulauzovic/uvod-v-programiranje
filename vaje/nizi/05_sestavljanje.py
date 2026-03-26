@@ -13,6 +13,10 @@
 #     >>> pozdrav("imaM več imen", "In en sam priimek")
 #     "Lep pozdrav! Imam Več Imen In En Sam Priimek."
 # =============================================================================
+def pozdrav(niz1, niz2):
+    niz1 = niz1.title()
+    niz2 = niz2.title()
+    return "Lep pozdrav! " + niz1 + " " + niz2 + "."
 
 # =====================================================================@027494=
 # 2. podnaloga
@@ -25,7 +29,8 @@
 #     >>> zmnozi(12.3456789123, 100000)
 #     "1234567.8912300"
 # =============================================================================
-
+def zmnozi(stevilo1, stevilo2):
+    return f"{stevilo1 * stevilo2:.7f}"
 # =====================================================================@027495=
 # 3. podnaloga
 # Sestavite funkcijo `turist`, ki sprejme številko računa, ceno, stopnjo davka
@@ -38,6 +43,24 @@
 #     >>> turist(10, 50, 22)
 #     "-RACUN---0000010\nCena: 50 EUR\nDDV: 11\nSkupno: 61\nHvala za obisk"
 # =============================================================================
+def turist(stevilka, cena, ddv_odstotek):
+    ddv = round(cena * ddv_odstotek / 100)
+    skupno = cena + ddv
+    stevilka_formatirana = str(stevilka).zfill(7)
+    return (
+        f"-RACUN---{stevilka_formatirana}\n"
+        f"Cena: {cena} EUR\n"
+        f"DDV: {ddv}\n"
+        f"Skupno: {skupno}\n"
+        f"Hvala za obisk"
+    )
+#ali
+def turist(num, price, vat):
+    return f"-RACUN---{num:07}\n" \
+           f"Cena: {price} EUR\n" \
+           f"DDV: {round(price*vat/100)}\n" \
+           f"Skupno: {round(price*(1 + vat/100))}\n" \
+           f"Hvala za obisk"
 
 
 
