@@ -11,7 +11,9 @@
 #     >>> razpolovi_seznam([5, 4, 3, 2, 1])
 #     ([5, 4], [3, 2, 1])
 # =============================================================================
-
+def razpolovi_seznam(seznam):
+    sredina = len(seznam)//2
+    return (seznam[:sredina], seznam[sredina:])
 # =====================================================================@009770=
 # 2. podnaloga
 # Sestavite funkcijo `zamenjaj_elementa(sez, i, j)`, ki iz seznama `sez` sestavi
@@ -26,7 +28,13 @@
 #     >>> zamenjaj_elementa([1, 2, 3, 4], 1, 2017)
 #     [1, 2, 3, 4]
 # =============================================================================
-
+def zamenjaj_elementa(sez, i, j):
+    if i >= len(sez) or j >= len(sez) or i < 0 or j < 0:
+        return sez
+    
+    nov_sez = sez[:]
+    nov_sez[i], nov_sez[j] = nov_sez[j], nov_sez[i]
+    return nov_sez
 # =====================================================================@009771=
 # 3. podnaloga
 # Sestavite funkcijo `porezani_podseznami`, ki sprejme seznam in zgradi nov
@@ -36,7 +44,8 @@
 #     >>> porezani_podseznami([1, 2, 3, 4])
 #     [[1, 2, 3, 4], [2, 3, 4], [3, 4], [4], []]
 # =============================================================================
-
+def porezani_podseznami(seznam):
+    return [seznam[i:] for i in range(len(seznam) + 1)]
 # =====================================================================@009812=
 # 4. podnaloga
 # Sestavite funkcijo `najvecji_element`, ki vrne največji element seznama. Če
